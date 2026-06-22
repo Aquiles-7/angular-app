@@ -1,0 +1,37 @@
+<div class="flex flex-col items-center gap-6">
+    <section class="mt-5 flex h-65 w-175 flex-row gap-4 rounded-[22px] border border-gray-400 bg-sky-50 p-3 transition-transform duration-700 hover:scale-105 hover:shadow-lg hover:shadow-gray-900">
+      
+      <figure class="relative h-full w-55 overflow-hidden rounded-[22px]">
+        <img
+          class="h-full w-full object-cover"
+          [src]="product.images[0]"
+          [alt]="product.title"
+          (error)="onImageError($event)"
+        />
+        <div class="absolute inset-0 bg-linear-to-t from-gray-950 opacity-50"></div>
+      </figure>
+
+      <article class="flex flex-1 flex-col justify-between">
+        <div>
+          <h2 class="mt-0.5 text-3xl font-bold uppercase text-gray-950">
+            {{ product.title }}
+          </h2>
+
+          <p class="mt-3 text-sm leading-relaxed text-slate-600">
+            {{ product.description }}
+          </p>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <span class="text-4xl font-extrabold text-gray-900">
+            ${{ product.price }}
+          </span>
+
+          <button (click)="addToCart(product)" class="rounded-2xl bg-gray-900 px-8 py-1 text-2xl font-bold uppercase text-sky-50 hover:bg-sky-50 hover:text-gray-900 hover:shadow-lg hover:shadow-gray-900">
+            Agregar
+          </button>
+        </div>
+      </article>
+    </section>
+
+</div>

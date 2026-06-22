@@ -1,0 +1,55 @@
+<div class="max-w-2xl mx-auto p-6 bg-sky-50 rounded-[22px] border border-gray-400 mt-10">
+  <h2 class="text-3xl font-bold text-gray-950 uppercase mb-6">Resumen del Pedido</h2>
+
+  @if (item.length === 0) {
+    <div class="text-center py-8">
+      <p class="text-xl text-slate-600">Tu carrito está vacío.</p>
+    </div>
+  } @else {
+    <div class="space-y-4 mb-6">
+      @for (item of item; track item.product.id) {
+        <div class="flex justify-between items-center border-b border-gray-300 pb-2">
+
+          <figure class="size-30 flex overflow-hidden rounded-xl bg-sky-50">
+            <img 
+              src="{{ item.product.images[0] }}" 
+              alt="{{ item.product.title }}"
+              class="w-full h-full object-cover"
+              (error)="onImageError($event)"
+            />
+          </figure>
+          <div>
+            <h3 class="font-bold text-gray-900">{{ item.product.title }}</h3>
+            <p class="text-sm text-slate-600">{{ item.quantity }} x {{ item.product.price | currency }}</p>
+          </div>
+          <span class="font-extrabold text-gray-900">{{ item.product.price * item.quantity | currency }}</span>
+          <div class="flex items-center gap-4">
+          <button (touch)="deleteItem(item.product.id)" (click)="deleteItem(item.product.id)" class="text-15 rounded-4xl bg-gray-900 px-4 py-2 text-center text-sm font-medium text-white transition-colors duration-200 hover:bg-sky-50 hover:shadow-lg hover:shadow-red-800 hover:text-red-800 hover:border-2 hover:border-red-800">Eliminar</button>
+          <app-quantity-button [starterQuantity]="item.quantity" (changedQantity)="changeQuantity(item.product.id, $event)"></app-quantity-button>
+        </div>
+        </div>
+      }
+    </div>
+
+    <div class="flex justify-between items-center mb-6 border-b-2 border-gray-400 pb-4">
+      <span class="text-2xl font-bold text-gray-950">Total:</span>
+      <span class="text-3xl font-extrabold text-gray-900">{{ total | currency }}</span>
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-sm font-bold uppercase text-gray-950 mb-2">Nota o aclaración para el pedido:</label>
+      <textarea 
+        [(ngModel)]="orderNote" 
+        placeholder="Ej: Dirección de envío, especificaciones, etc."
+        class="w-full p-3 border border-gray-400 rounded-xl bg-white text-gray-950 focus:outline-none focus:ring-2 focus:ring-gray-900 h-24 resize-none"
+      ></textarea>
+    </div>
+
+    <button 
+      (click)="submitOrder()" 
+      class="w-full rounded-2xl bg-gray-900 py-3 text-2xl font-bold uppercase text-sky-50 hover:bg-sky-50 hover:text-gray-900 border border-transparent hover:border-gray-900 hover:shadow-lg transition-all"
+    >
+      Enviar pedido por WhatsApp
+    </button>
+  }
+</div>

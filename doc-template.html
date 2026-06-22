@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Tienda de Productos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        .cover {
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 3px solid #2563eb;
+        }
+
+        .cover h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #1e40af;
+        }
+
+        .cover .subtitle {
+            font-size: 28px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .cover .author {
+            font-size: 18px;
+            color: #999;
+            margin-top: 50px;
+        }
+
+        .cover .date {
+            font-size: 14px;
+            color: #bbb;
+            margin-top: 20px;
+        }
+
+        h1, h2, h3 {
+            color: #1e40af;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 32px;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-top: 25px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .content {
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .code-block {
+            background-color: #f5f5f5;
+            border-left: 4px solid #2563eb;
+            padding: 12px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+
+        .feature-box {
+            background-color: #f0f9ff;
+            border: 1px solid #2563eb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .architecture-diagram {
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1e40af;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .toc {
+            background-color: #f0f9ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .toc h2 {
+            margin-top: 0;
+        }
+
+        .toc ol {
+            margin-left: 30px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+            font-size: 12px;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .page-break {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PORTADA -->
+    <div class="cover">
+        <h1>Catálogo Tienda de Productos</h1>
+        <p class="subtitle">Documentación Técnica</p>
+        <p class="subtitle">Final Programación 4</p>
+        <p class="author">Autor: Aquiles Ferreyra Arca</p>
+        <p class="date">Fecha: Mayo 2026</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- TABLA DE CONTENIDOS -->
+    <div class="content">
+        <h1>Tabla de Contenidos</h1>
+        <div class="toc">
+            <ol>
+                <li>Introducción</li>
+                <li>Descripción General del Proyecto</li>
+                <li>Arquitectura del Sistema</li>
+                <li>Tecnologías Utilizadas</li>
+                <li>Estructura de Carpetas</li>
+                <li>Modelos de Datos</li>
+                <li>Servicios</li>
+                <li>Componentes</li>
+                <li>Páginas</li>
+                <li>Funcionalidades Principales</li>
+                <li>Instrucciones de Instalación y Uso</li>
+                <li>Conclusiones</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- INTRODUCCIÓN -->
+    <div class="content section">
+        <h1>1. Introducción</h1>
+        <p>
+            Este documento presenta la documentación técnica completa de la aplicación "Catálogo Tienda de Productos",
+            un proyecto desarrollado como trabajo final de la materia Programación 4. Se trata de una aplicación web
+            moderna que permite a los usuarios navegar, buscar y comprar productos de una tienda en línea.
+        </p>
+        <p>
+            La aplicación ha sido construida utilizando Angular 21, un framework moderno y robusto para el desarrollo
+            de aplicaciones web. Incluye funcionalidades de catálogo de productos, sistema de carrito de compras,
+            búsqueda avanzada, integración con WhatsApp para notificaciones de pedidos, y un panel de administración
+            para gestionar productos.
+        </p>
+    </div>
+
+    <!-- DESCRIPCIÓN GENERAL -->
+    <div class="content section">
+        <h1>2. Descripción General del Proyecto</h1>
+        <p>
+            "Catálogo Tienda de Productos" es una aplicación web que simula el funcionamiento de una tienda en línea.
+            Los usuarios pueden:
+        </p>
+        <ul>
+            <li>Explorar categorías de productos</li>
+            <li>Ver detalles de productos individuales</li>
+            <li>Buscar productos por nombre o categoría</li>
+            <li>Agregar productos al carrito de compras</li>
+            <li>Modificar cantidades de productos en el carrito</li>
+            <li>Proceder con el checkout</li>
+            <li>Recibir confirmación de pedidos por WhatsApp</li>
+        </ul>
+        <p>
+            Los administradores pueden acceder a un panel especial donde pueden:
+        </p>
+        <ul>
+            <li>Crear nuevos productos</li>
+            <li>Editar productos existentes</li>
+            <li>Eliminar productos del catálogo</li>
+            <li>Gestionar categorías de productos</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ARQUITECTURA -->
+    <div class="content section">
+        <h1>3. Arquitectura del Sistema</h1>
+        <p>
+            La aplicación sigue la arquitectura recomendada por Angular, utilizando componentes standalone y
+            una estructura modular basada en servicios. La aplicación está organizada en las siguientes capas:
+        </p>
+
+        <h2>3.1 Capas de la Aplicación</h2>
+        <div class="architecture-diagram">
+┌─────────────────────────────────────────┐
+│        CAPA DE PRESENTACIÓN              │
+│  (Componentes y Páginas Angular)         │
+├─────────────────────────────────────────┤
+│        CAPA DE SERVICIOS                 │
+│  (ProductService, CartService, etc.)     │
+├─────────────────────────────────────────┤
+│        CAPA DE DATOS                     │
+│  (LocalStorage, JSON Assets)             │
+└─────────────────────────────────────────┘
+        </div>
+
+        <h2>3.2 Flujo de Datos</h2>
+        <p>
+            Los datos fluyen desde la capa de datos hacia los servicios, que actúan como intermediarios.
+            Los servicios utilizan RxJS (Reactive Extensions) para manejar flujos de datos asincronos.
+            Los componentes se suscriben a estos observables para recibir actualizaciones en tiempo real.
+        </p>
+    </div>
+
+    <!-- TECNOLOGÍAS -->
+    <div class="content section">
+        <h1>4. Tecnologías Utilizadas</h1>
+
+        <h2>4.1 Framework Principal</h2>
+        <ul>
+            <li><strong>Angular 21.2.0:</strong> Framework de desarrollo web moderno y robusto</li>
+        </ul>
+
+        <h2>4.2 Librerías Principales</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Librería</th>
+                    <th>Versión</th>
+                    <th>Propósito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@angular/common</td>
+                    <td>21.2.0</td>
+                    <td>Funcionalidades comunes de Angular</td>
+                </tr>
+                <tr>
+                    <td>@angular/forms</td>
+                    <td>21.2.0</td>
+                    <td>Manejo de formularios reactivos</td>
+                </tr>
+                <tr>
+                    <td>@angular/router</td>
+                    <td>21.2.0</td>
+                    <td>Sistema de enrutamiento</td>
+                </tr>
+                <tr>
+                    <td>Tailwind CSS</td>
+                    <td>4.3.0</td>
+                    <td>Framework de estilos CSS</td>
+                </tr>
+                <tr>
+                    <td>RxJS</td>
+                    <td>7.8.0</td>
+                    <td>Programación reactiva</td>
+                </tr>
+                <tr>
+                    <td>TypeScript</td>
+                    <td>5.9.2</td>
+                    <td>Lenguaje de programación tipado</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4.3 Herramientas de Desarrollo</h2>
+        <ul>
+            <li><strong>Angular CLI 21.2.9:</strong> Herramienta de línea de comandos para Angular</li>
+            <li><strong>Vitest 4.0.8:</strong> Framework de testing unitario</li>
+            <li><strong>Prettier 3.8.1:</strong> Formateador de código</li>
+            <li><strong>TypeScript 5.9.2:</strong> Compilador de TypeScript</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- ESTRUCTURA DE CARPETAS -->
+    <div class="content section">
+        <h1>5. Estructura de Carpetas</h1>
+
+        <div class="code-block">
+src/
+├── app/
+│   ├── core/
+│   │   ├── components/
+│   │   │   ├── catalog-component/
+│   │   │   ├── cart-component/
+│   │   │   ├── cart-modal-component/
+│   │   │   ├── product-card-component/
+│   │   │   ├── product-form-component/
+│   │   │   ├── admin-login-component/
+│   │   │   ├── admin-products-component/
+│   │   │   ├── category-component/
+│   │   │   ├── search-component/
+│   │   │   └── quantity-button/
+│   │   └── interface/
+│   │       └── tabs/
+│   ├── pages/
+│   │   ├── home/
+│   │   ├── catalog/
+│   │   ├── product-details/
+│   │   ├── cart/
+│   │   ├── checkout/
+│   │   └── admin-panel/
+│   ├── models/
+│   │   ├── product.ts
+│   │   ├── cart-item.ts
+│   │   ├── category.ts
+│   │   └── search.ts
+│   ├── services/
+│   │   ├── product-service.ts
+│   │   ├── cart-service.ts
+│   │   ├── category-service.ts
+│   │   └── whatsapp-service.ts
+│   ├── app.ts
+│   ├── app.routes.ts
+│   ├── app.config.ts
+│   └── app.html
+├── assets/
+│   └── data/
+│       └── products.json
+├── index.html
+└── main.ts
+        </div>
+
+        <p><strong>Descripción de directorios principales:</strong></p>
+        <ul>
+            <li><strong>core:</strong> Contiene componentes reutilizables e interfaces de la aplicación</li>
+            <li><strong>pages:</strong> Componentes de página (vistas principales)</li>
+            <li><strong>models:</strong> Interfaces y tipos de datos (modelos)</li>
+            <li><strong>services:</strong> Servicios para lógica de negocio</li>
+            <li><strong>assets:</strong> Recursos estáticos (imágenes, datos, etc.)</li>
+        </ul>
+    </div>
+
+    <!-- MODELOS DE DATOS -->
+    <div class="content section">
+        <h1>6. Modelos de Datos</h1>
+
+        <h2>6.1 Product</h2>
+        <p>Define la estructura de un producto en el catálogo.</p>
+        <div class="code-block">
+export interface Product {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+    stock: number;
+    category: string;
+}
+        </div>
+
+        <h2>6.2 CartItem</h2>
+        <p>Define un producto en el carrito con su cantidad.</p>
+        <div class="code-block">
+export interface CartItem {
+    product: Product;
+    quantity: number;
+}
+        </div>
+
+        <h2>6.3 Category</h2>
+        <p>Define la estructura de una categoría de productos.</p>
+        <div class="code-block">
+export interface Category {
+    id: number;
+    name: string;
+    description: string;
+}
+        </div>
+
+        <h2>6.4 Search</h2>
+        <p>Define los parámetros de búsqueda de productos.</p>
+        <div class="code-block">
+export interface Search {
+    text: string;
+    category: string;
+}
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- SERVICIOS -->
+    <div class="content section">
+        <h1>7. Servicios</h1>
+
+        <h2>7.1 ProductService</h2>
+        <p>
+            Gestiona todas las operaciones relacionadas con productos. Utiliza HttpClient para obtener
+            datos de un archivo JSON y RxJS BehaviorSubject para manejar el estado de los productos.
+        </p>
+        <div class="feature-box">
+            <strong>Métodos principales:</strong>
+            <ul>
+                <li><strong>getAll():</strong> Obtiene todos los productos</li>
+                <li><strong>getProducts():</strong> Retorna observable de productos</li>
+                <li><strong>getProductByCategory(category):</strong> Filtra por categoría</li>
+                <li><strong>getProductById(id):</strong> Obtiene un producto específico</li>
+                <li><strong>searchProducts(parameter):</strong> Busca productos por texto o categoría</li>
+            </ul>
+        </div>
+
+        <h2>7.2 CartService</h2>
+        <p>
+            Gestiona el carrito de compras del usuario. Los datos del carrito se persisten en localStorage
+            para mantener el estado entre sesiones.
+        </p>
+        <div class="feature-box">
+            <strong>Métodos principales:</strong>
+            <ul>
+                <li><strong>addItem(product):</strong> Agrega un producto al carrito</li>
+                <li><strong>getItems():</strong> Obtiene todos los items del carrito</li>
+                <li><strong>deleteItem(productId):</strong> Elimina un producto del carrito</li>
+                <li><strong>changeQuantity(productId, quantity):</strong> Modifica la cantidad</li>
+                <li><strong>updateStorage():</strong> Sincroniza carrito con localStorage</li>
+            </ul>
+        </div>
+
+        <h2>7.3 CategoryService</h2>
+        <p>Gestiona las categorías de productos disponibles en la aplicación.</p>
+
+        <h2>7.4 WhatsAppService</h2>
+        <p>
+            Integra WhatsApp Web para enviar notificaciones de pedidos confirmados a los clientes.
+            Utiliza la API de WhatsApp para generar mensajes con detalles del pedido.
+        </p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- COMPONENTES -->
+    <div class="content section">
+        <h1>8. Componentes</h1>
+
+        <h2>8.1 ProductCardComponent</h2>
+        <p>
+            Componente que muestra una tarjeta individual de producto con su imagen, nombre,
+            descripción, precio y botón para agregar al carrito.
+        </p>
+
+        <h2>8.2 CatalogComponent</h2>
+        <p>
+            Componente que renderiza una lista de productos en formato de grid. Utiliza ProductCardComponent
+            para mostrar cada producto.
+        </p>
+
+        <h2>8.3 CartComponent</h2>
+        <p>
+            Componente que muestra el contenido del carrito con la posibilidad de modificar cantidades,
+            eliminar items y proceder al checkout.
+        </p>
+
+        <h2>8.4 CartModalComponent</h2>
+        <p>
+            Componente modal que muestra una vista previa del carrito en una ventana emergente,
+            permitiendo acciones rápidas sin navegar a la página del carrito.
+        </p>
+
+        <h2>8.5 SearchComponent</h2>
+        <p>
+            Componente de búsqueda que permite filtrar productos por texto o categoría.
+            Integrado en la barra de navegación principal.
+        </p>
+
+        <h2>8.6 CategoryComponent</h2>
+        <p>
+            Componente que muestra las categorías disponibles como pestañas o filtros.
+            Permite al usuario filtrar productos por categoría.
+        </p>
+
+        <h2>8.7 QuantityButton</h2>
+        <p>
+            Componente botón reutilizable para incrementar o decrementar la cantidad de productos
+            en el carrito.
+        </p>
+
+        <h2>8.8 ProductFormComponent</h2>
+        <p>
+            Formulario reactivo para crear y editar productos en el panel de administración.
+            Incluye validación de campos.
+        </p>
+
+        <h2>8.9 AdminLoginComponent</h2>
+        <p>
+            Componente de autenticación para acceso al panel administrativo. Valida credenciales
+            de administrador.
+        </p>
+
+        <h2>8.10 AdminProductsComponent</h2>
+        <p>
+            Panel de administración que permite gestionar productos (crear, editar, eliminar).
+            Solo accesible para usuarios autenticados.
+        </p>
+
+        <h2>8.11 Tabs (Interface)</h2>
+        <p>
+            Componente interfaz para mostrar un sistema de navegación con pestañas.
+            Usado principalmente en la barra de navegación principal de la aplicación.
+        </p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- PÁGINAS -->
+    <div class="content section">
+        <h1>9. Páginas</h1>
+
+        <h2>9.1 Home</h2>
+        <p>
+            Página de inicio que muestra las categorías de productos y permite al usuario
+            explorar el catálogo desde categorías específicas.
+        </p>
+        <div class="code-block">
+Ruta: /
+        </div>
+
+        <h2>9.2 Catalog</h2>
+        <p>
+            Página que muestra el catálogo completo de productos con opciones de búsqueda
+            y filtrado por categoría.
+        </p>
+        <div class="code-block">
+Ruta: /catalog
+        </div>
+
+        <h2>9.3 ProductDetails</h2>
+        <p>
+            Página con detalles completos de un producto específico. Muestra descripción ampliada,
+            precio, disponibilidad y opciones de compra.
+        </p>
+
+        <h2>9.4 Cart</h2>
+        <p>
+            Página que muestra el contenido completo del carrito de compras.
+            Permite modificar cantidades, eliminar items y proceder al checkout.
+        </p>
+        <div class="code-block">
+Ruta: /cart
+        </div>
+
+        <h2>9.5 Checkout</h2>
+        <p>
+            Página de finalización de compra donde se confirma el pedido y se envía
+            notificación por WhatsApp al cliente.
+        </p>
+
+        <h2>9.6 AdminPanel</h2>
+        <p>
+            Panel de administración para la gestión de productos. Requiere autenticación.
+            Permite crear, editar y eliminar productos del catálogo.
+        </p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- FUNCIONALIDADES PRINCIPALES -->
+    <div class="content section">
+        <h1>10. Funcionalidades Principales</h1>
+
+        <h2>10.1 Catálogo de Productos</h2>
+        <ul>
+            <li>Visualización de todos los productos disponibles</li>
+            <li>Filtrado por categorías</li>
+            <li>Vista de detalles de cada producto</li>
+            <li>Imágenes y descripciones de productos</li>
+        </ul>
+
+        <h2>10.2 Sistema de Búsqueda</h2>
+        <ul>
+            <li>Búsqueda por nombre de producto</li>
+            <li>Búsqueda por categoría</li>
+            <li>Búsqueda en tiempo real con resultados instantáneos</li>
+            <li>Búsqueda insensible a mayúsculas/minúsculas</li>
+        </ul>
+
+        <h2>10.3 Carrito de Compras</h2>
+        <ul>
+            <li>Agregar productos al carrito</li>
+            <li>Incrementar/decrementar cantidades</li>
+            <li>Eliminar productos del carrito</li>
+            <li>Persistencia del carrito mediante localStorage</li>
+            <li>Visualización del total del carrito</li>
+        </ul>
+
+        <h2>10.4 Proceso de Checkout</h2>
+        <ul>
+            <li>Resumen del pedido</li>
+            <li>Confirmación de compra</li>
+            <li>Envío de detalles por WhatsApp</li>
+            <li>Confirmación de pedido exitoso</li>
+        </ul>
+
+        <h2>10.5 Panel de Administración</h2>
+        <ul>
+            <li>Autenticación de administrador</li>
+            <li>Crear nuevos productos</li>
+            <li>Editar productos existentes</li>
+            <li>Eliminar productos</li>
+            <li>Gestión de stock</li>
+        </ul>
+
+        <h2>10.6 Integración con WhatsApp</h2>
+        <ul>
+            <li>Envío automático de confirmaciones de pedido por WhatsApp</li>
+            <li>Detalles del pedido incluidos en el mensaje</li>
+            <li>Enlaces para facilitar seguimiento de pedidos</li>
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- INSTRUCCIONES DE INSTALACIÓN Y USO -->
+    <div class="content section">
+        <h1>11. Instrucciones de Instalación y Uso</h1>
+
+        <h2>11.1 Requisitos Previos</h2>
+        <ul>
+            <li>Node.js (versión 18 o superior)</li>
+            <li>npm (incluido con Node.js)</li>
+            <li>Angular CLI (se puede instalar globalmente con npm)</li>
+            <li>Un navegador web moderno (Chrome, Firefox, Edge, Safari)</li>
+        </ul>
+
+        <h2>11.2 Instalación</h2>
+        <p>Siga estos pasos para instalar y ejecutar la aplicación:</p>
+        <div class="code-block">
+# 1. Clonar o descargar el proyecto
+git clone [URL_DEL_REPOSITORIO]
+cd angular-app
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Iniciar servidor de desarrollo
+npm start
+
+# 4. Abrir en navegador
+http://localhost:4200/
+        </div>
+
+        <h2>11.3 Compilación para Producción</h2>
+        <div class="code-block">
+npm run build
+# Los archivos compilados se guardarán en la carpeta 'dist/'
+        </div>
+
+        <h2>11.4 Ejecución de Tests</h2>
+        <div class="code-block">
+npm test
+# Se ejecutarán todas las pruebas unitarias con Vitest
+        </div>
+
+        <h2>11.5 Uso de la Aplicación</h2>
+        <p><strong>Para Clientes:</strong></p>
+        <ol>
+            <li>Ingresar a la página de inicio (Home)</li>
+            <li>Explorar categorías o usar la búsqueda</li>
+            <li>Ver detalles de productos</li>
+            <li>Agregar productos al carrito</li>
+            <li>Proceder al checkout</li>
+            <li>Confirmar pedido (envío por WhatsApp)</li>
+        </ol>
+
+        <p><strong>Para Administradores:</strong></p>
+        <ol>
+            <li>Acceder al panel de administración</li>
+            <li>Autenticarse con credenciales</li>
+            <li>Crear, editar o eliminar productos</li>
+            <li>Gestionar categorías y stock</li>
+        </ol>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- CONCLUSIONES -->
+    <div class="content section">
+        <h1>12. Conclusiones</h1>
+        <p>
+            "Catálogo Tienda de Productos" es una aplicación completa y funcional que demuestra
+            el dominio de las tecnologías modernas de desarrollo web, específicamente Angular 21.
+            La aplicación implementa patrones de arquitectura escalable, manejo eficiente del estado,
+            integración con servicios externos (WhatsApp), y una experiencia de usuario intuitiva.
+        </p>
+
+        <h2>12.1 Logros Principales</h2>
+        <ul>
+            <li>Interfaz de usuario moderna y responsiva</li>
+            <li>Sistema de búsqueda y filtrado funcional</li>
+            <li>Carrito de compras con persistencia de datos</li>
+            <li>Integración con WhatsApp para notificaciones</li>
+            <li>Panel de administración seguro</li>
+            <li>Código limpio y bien estructurado</li>
+            <li>Componentes reutilizables y mantenibles</li>
+        </ul>
+
+        <h2>12.2 Posibles Mejoras Futuras</h2>
+        <ul>
+            <li>Integración con una base de datos real (MongoDB, PostgreSQL, etc.)</li>
+            <li>Sistema de autenticación de usuarios mejorado (JWT, OAuth2)</li>
+            <li>Pasarela de pagos integrada (Stripe, PayPal, etc.)</li>
+            <li>Panel de análisis para administradores</li>
+            <li>Sistema de reseñas y calificaciones de productos</li>
+            <li>Historial de compras para usuarios registrados</li>
+            <li>Recomendaciones personalizadas de productos</li>
+            <li>Chat de atención al cliente en tiempo real</li>
+        </ul>
+
+        <h2>12.3 Reflexión Final</h2>
+        <p>
+            Este proyecto representa un importante logro en el aprendizaje de Angular y desarrollo web moderno.
+            Ha permitido aplicar conceptos fundamentales como componentes, servicios, ruteo, formularios reactivos,
+            y manejo del estado. La implementación de características avanzadas como la integración con WhatsApp
+            demuestra la capacidad de integrar servicios externos y resolver problemas reales de negocio.
+        </p>
+    </div>
+
+    <div class="content footer">
+        <p>Documento generado automáticamente</p>
+        <p>Catálogo Tienda de Productos - Final Programación 4</p>
+        <p>Autor: Aquiles Ferreyra Arca</p>
+    </div>
+</body>
+</html>

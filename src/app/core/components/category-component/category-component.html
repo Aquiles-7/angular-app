@@ -1,0 +1,49 @@
+<div>
+  @if (!selectedCategory) {
+    <div class="flex flex-col gap-6 rounded-[22px] border border-gray-400 bg-sky-50 p-6 transition-transform duration-700">
+      <h2 class="text-center text-4xl font-bold tracking-wide text-gray-950 uppercase">Categorías</h2>
+
+      <div class="flex flex-wrap justify-center gap-6">
+        @for (category of categories; track category.name) {
+          <button
+            (click)="selectCategory(category)"
+            class="group flex h-72 w-56 flex-col items-center rounded-2xl border p-3 text-center transition-all duration-500 hover:scale-105 hover:bg-sky-50 hover:text-gray-900 hover:shadow-lg hover:shadow-gray-900 border-transparent bg-gray-900 text-sky-50">
+            
+            <span class="mb-2 block w-full truncate text-base font-black tracking-wider uppercase"> 
+              {{ category.name }} 
+            </span>
+
+            <img
+              [src]="category.products[0]?.images?.[0] || ''"
+              [alt]="category.name"
+              class="w-full flex-1 rounded-xl border-2 object-cover transition-colors duration-500 border-sky-100 group-hover:border-gray-900"/>
+          </button>
+        }
+      </div>
+    </div>
+  }
+</div>    
+
+<div class="">
+  @if (selectedCategory) {
+  <div>
+    <section class="mb-6 grid w-full grid-cols-3 items-center">
+      <div class="flex justify-start">
+        <button (click)="selectedCategory = null" class="rounded-xl bg-gray-900 px-6 py-2 text-sm font-bold text-sky-50 uppercase transition-all hover:bg-gray-800">
+          <img class="size-[35px]" src="../assets/icons/arrow_back.svg" alt="back" />
+        </button>
+      </div>
+       <h2 class="text-center text-4xl font-bold tracking-wide text-gray-900 uppercase">{{ selectedCategory.name }}</h2>
+    </section>
+    <div class="flex flex-col items-center gap-6">
+      @for (product of selectedCategory.products; track product.id) {
+        <app-catalog-component [product]="product"></app-catalog-component>
+      }
+    </div>
+  </div>
+  } @else {
+    <div class="text-center mt-10 text-slate-500 font-medium">
+      <p>Selecciona una categoría para ver sus productos</p>
+    </div>
+  }
+</div>

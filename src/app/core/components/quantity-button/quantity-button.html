@@ -1,0 +1,20 @@
+<div class="flex items-center gap-4 p-2">
+  <button 
+    [disabled]="QuantityNumer() === 1"
+    (click)="updateNumber(-1)"
+    class="bg-gray-900 text-sky-50 px-4 py-2 rounded-lg font-bold hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+  >
+    -
+  </button>
+
+  <span class="text-xl font-bold text-gray-900 w-8 text-center">
+    {{ QuantityNumer() }}
+  </span>
+
+  <button 
+    (click)="updateNumber(1)"
+    class="bg-gray-900 text-sky-50 px-4 py-2 rounded-lg font-bold hover:bg-gray-800 transition-colors"
+  >
+    +
+  </button>
+</div>
